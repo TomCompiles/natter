@@ -1,0 +1,62 @@
+
+.navbar .natter-header {
+	margin: 8px auto 5px 1.7em;
+	font-size: 27px;
+	background-color: black;
+	color: white;
+	font-family: 'Avenir';
+	padding: 5px 8px;
+}
+
+.container-fluid .col-center {
+	float: none;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.container-fluid .card .card-img-top {
+	border-radius: 0;
+}
+
+.card-title {
+	font-weight: 600;
+}
+
+.subset-text {
+	opacity: .5;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.sub-headers {
+	margin-left: 20px;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.icon-bar {
+    width: 100%; 
+    background-color: white; 
+    overflow: auto; 
+    position: fixed;
+    bottom: 0;
+}
+
+.icon-bar a {
+    float: left; 
+    text-align: center; 
+    width: 33%; 
+    padding: 12px 0;
+    transition: all 0.3s ease;
+    color: black; 
+    font-size: 30px;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.active {
+    background-color: #F1F1F1;
+}
