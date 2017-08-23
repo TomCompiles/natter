@@ -238,7 +238,7 @@
 				$('#my-video').show()
 				video_player.ready(function () {
 					video_player.play();
-					reset_video_activations(video_id)
+					reset_video_activations(vid_id)
 					vid_card_tether.position()
 				});
 				vid_card_tether.position()
@@ -305,12 +305,16 @@
 						}
 					}
 				}
-				}
+	
+			function show_card(id,time) {
+				// in future get card text from id
+				// etc
+				vid_card.show()
+				vid_card.position()
 			}
 
-			register_time_callback(2,0,console.log)
 
-
+			register_time_callback(2,1,show_card)
 
 
 

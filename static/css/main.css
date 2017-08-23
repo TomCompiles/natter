@@ -38,7 +38,7 @@
     width: 100%; 
     background-color: white; 
     overflow: auto; 
-    position: fixed;
+    position: absolute;
     bottom: 0;
 }
 
