@@ -1,4 +1,5 @@
-function initialise(int type){
-	var articles = JSON.parse(articles);
+function initialise(type){
+	var articles = allArticles;
 	
 }
+initialise(0);
