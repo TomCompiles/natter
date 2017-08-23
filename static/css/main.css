@@ -1,11 +1,10 @@
 
 .navbar .natter-header {
-	margin: 8px auto 5px 1.7em;
 	font-size: 27px;
 	background-color: black;
 	color: white;
 	font-family: 'Avenir';
-	padding: 5px 8px;
+	/* padding: 5px 8px; */
 }
 
 .container-fluid .col-center {
@@ -66,6 +65,4 @@
     src: url('../fonts/ONEDAY.ttf');
 }
 
-body {
-    font: oneday;
-}
+
