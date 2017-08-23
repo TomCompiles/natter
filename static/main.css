@@ -1,6 +1,7 @@
 
 body {
 	background-color: #E0E0E0;
+	over
 }
 
 .navbar .natter-header {
@@ -85,7 +86,7 @@ body {
 }
 
 .vox-container {
-	margin: 20px 0px;
+	margin-bottom: 30px;
 }
 
 .voxpop-item {
@@ -96,6 +97,12 @@ body {
 	box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
 	margin-bottom: 10px; 
 	width: 95% !important;
+}
+
+.main-card {
+	box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+	width: 95% !important; 
+	margin-top: 10px;
 }
 
 .active {
