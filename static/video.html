@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
 	<title>Natter London</title>
 	<link rel="stylesheet" href="css/main.css">
@@ -7,29 +8,28 @@
 	<!-- Slick.js (Carousel) -->
 	<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-	<meta name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="css/bootstrap.min.css" >
-	<link rel="stylesheet" href="css/video-js.min.css" >
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/video-js.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 
-	<style> video { border: 3px black;} </style>
+	<style>
+		video {
+			border: 3px black;
+		}
+	</style>
 </head>
 
 <body>
+	<!-- width="640" height="264"  style="display:none"-->
 
-	<nav class="navbar navbar-light bg-light">
-		<span class="h1 natter-header" class="navbar-brand mb-0">NATTER</span>
-	</nav>
-<!-- width="640" height="264" -->
-
-				<video id="my-video" class="video-js vjs-default-skin vjs-fluid" controls  preload="auto"  
-				poster="http://placekitten.com/200/300" data-setup="{}">
-				  <source src="https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4" type='video/mp4'>
-				  <p class="vjs-no-js">
-					To view this video please enable JavaScript, and consider upgrading to a web browser that
-					<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-				  </p>
-				</video>
+	<video id="my-video" class="video-js vjs-default-skin vjs-fluid" poster="http://placekitten.com/200/300" data-setup="{}">
+		<!-- <source src="https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4" type='video/mp4'> -->
+		<p class="vjs-no-js">
+			To view this video please enable JavaScript, and consider upgrading to a web browser that
+			<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+		</p>
+	</video>
 	<style>
 		#my-video {
 			position: absolute;
@@ -40,10 +40,123 @@
 			height: 100vw;
 			top: 0;
 			left: 0;
+			z-index: 1050;
 		}
 
+		#vid-card {
+			z-index: 1051;
+			width: 70%;
+		}
 	</style>
-	
+
+
+	<div id="vid-card" class="card" style="display:none">
+		<div class="card-block">
+			<a href="#"><i class="fa fa-globe"></i></a> Find out more about this place.
+		</div>
+	</div>
+
+	<nav class="navbar navbar-light bg-light">
+		<span class="h1 natter-header text-center">NATTER</span>
+	</nav>
+
+	<div class="container-fluid" id='main-content'>
+
+		<div class="row">
+			<div class="col-sm-12 col-center">
+
+				<div class="card">
+					<img class="card-img-top art-img" src="http://via.placeholder.com/300x200" alt="headline image">
+					<div class="card-body">
+						<p class="subset-text">Culture &#8226; 12 Jan 2017</p>
+						<h4 class="card-title">Example Headline Main</h4>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-sm-12 col-center">
+
+				<div class="card">
+					<img class="card-img-top" src="http://via.placeholder.com/300x200.png/09f/fff" alt="headline image">
+					<div class="card-body">
+						<p class="subset-text">Culture &#8226; 12 Jan 2017</p>
+						<h4 class="card-title">Example Headline</h4>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 col-center">
+
+				<h4 class="sub-headers">Latest</h4>
+
+				<div class="card">
+					<img class="card-img-top art-img" src="http://via.placeholder.com/300x200" alt="headline image">
+					<div class="card-body">
+						<p class="subset-text">Culture &#8226; 12 Jan 2017</p>
+						<h4 class="card-title">Example Headline 4</h4>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-sm-12 col-center">
+
+				<div class="card">
+					<img class="card-img-top" src="http://via.placeholder.com/300x200.png/09f/fff" alt="headline image">
+					<div class="card-body">
+						<p class="subset-text">Culture &#8226; 12 Jan 2017</p>
+						<h4 class="card-title">Example Headline</h4>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<nav class="navbar fixed-bottom navbar-light bg-faded">
+		<div class="icon-bar">
+			<a class="active" href="#"><i class="fa fa-home"></i></a>
+			<a href="#"><i class="fa fa-search"></i></a>
+			<a href="#"><i class="fa fa-globe"></i></a>
+		</div>
+	</nav>
+
+	<div class="modal fade" id="article-modal">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title">Modal title</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <p>Modal body text goes here.</p>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-primary">Save changes</button>
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+
 	<!-- Scripts -->
 	<!-- <script src="https://code.jquery.com/jqu<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/tether.min.js"></script>
@@ -53,7 +166,98 @@
 	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script> -->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/tether.min.js"></script>
-	<script src="js/bootstrap.min.js"> </script>
+	<script src="js/bootstrap.min.js">
+
+	</script>
 	<script src="js/video.js"></script>
+
+	<script>
+		function change_visibility(component,new_visibility) {
+				if (new_visibility == 'show' || new_visibility == true) {
+					$(component).show()
+				} else {
+					$(component).hide()
+				}
+			}
+
+		$(document).ready(function () {
+			main_content = $('#main-content')
+			vid = $('#my-video')
 			
+			vid_inner = $('.vjs-tech')
+		
+			vid.hide()
+
+			vid_card = $('#vid-card')
+			vid_card_tether = new Tether({
+				element: vid_card,
+				target: vid_inner,
+				attachment: 'top left',
+				targetAttachment: 'top center',
+				// targetModifier: 'hidden'
+				offset: '-10px 0px',
+				enabled: false
+			});
+			vid_card_tether.position()
+
+
+			vid_card.click(function (e) { 
+				e.preventDefault();
+				video_player = videojs('my-video');
+				if (video_player.paused() == false) {
+					video_player.pause()
+				} else {
+					video_player.play()
+				}
+			});
+
+			function show_article(content) {
+				$('#article-modal').modal()
+			}
+
+
+			function play_video(url) {
+				video_player = videojs('my-video');
+				video_player.src(url);
+				$('#my-video').show()
+				video_player.ready(function () {
+					video_player.play();
+					vid_card_tether.position()
+				});
+				vid_card_tether.position()
+
+				video_player.on('ended', function () {
+					$('#my-video').hide()
+					show_article("hi")
+					vid_card.hide()
+					
+				});
+
+				video_player.on('playing', function () {
+					vid_card.show()
+					vid_card.position()
+					
+				});
+
+				video_player.on('playing', function () {
+					vid_card.show()
+					vid_card.position()
+					
+				});
+			}
+
+			$('.art-img').click(function (e) {
+				e.preventDefault();
+				img = e.target
+				vid_url = "http://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4"
+				// vid-url = e.attr('url')
+				play_video(vid_url)
+
+
+
+			});
+		});
+	</script>
+
+
 </body>
