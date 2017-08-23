@@ -1,0 +1,103 @@
+
+body {
+	background-color: #E0E0E0;
+}
+
+.navbar .natter-header {
+	margin: 5px auto 8px auto;
+	font-size: 25px;
+	color: white;
+	font-family: 'One Day';
+	letter-spacing: 2px;
+	padding: 10px 8px 5px 10px;
+	position: relative;
+	bottom: -3px;
+	border-radius: 3px;
+}
+
+.navbar .mention-natter-header {
+	margin: 5px 2em 8px auto;
+	font-size: 25px;
+	color: white;
+	font-family: 'One Day';
+	letter-spacing: 2px;
+	padding: 10px 8px 5px 10px;
+	position: relative;
+	bottom: -3px;
+	border-radius: 3px;
+}
+
+.container-fluid .col-center {
+	float: none;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.container-fluid .card .card-img-top {
+	border-radius: 0;
+}
+
+.card-title {
+	font-weight: 600;
+}
+
+.subset-text {
+	opacity: .5;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.sub-headers {
+	margin-left: 20px;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.last {
+	margin-bottom: 70px;
+}
+
+.icon-bar {
+    width: 100%; 
+    background-color: white; 
+    overflow: auto; 
+    position: fixed;
+    bottom: 0;
+    opacity: .9;
+}
+
+.icon-bar a {
+    float: left; 
+    text-align: center; 
+    width: 33%; 
+    padding: 12px 0;
+    transition: all 0.3s ease;
+    color: black; 
+    font-size: 30px;
+}
+
+.back-btn {
+	font-size: 42px !important;
+	margin-left: 5px;
+	color: white;
+	font-weight: bold;
+}
+
+.vox-container {
+	margin: 20px 0px;
+}
+
+.voxpop-item {
+	width: 100%;
+}
+
+.recommend-card {
+	box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+	margin-bottom: 10px; 
+	width: 95% !important;
+}
+
+.active {
+    background-color: #F1F1F1;
+}
