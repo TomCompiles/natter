@@ -238,6 +238,7 @@
 				$('#my-video').show()
 				video_player.ready(function () {
 					video_player.play();
+					reset_video_activations(video_id)
 					vid_card_tether.position()
 				});
 				vid_card_tether.position()
@@ -250,45 +251,64 @@
 				});
 
 				video_player.on('playing', function () {
-					vid_card.show()
+					// vid_card.show()
 					vid_card.position()
 
 				});
 
-				video_player.on('playing', function () {
-					vid_card.show()
-					vid_card.position()
-
-				});
 				video_player.on('timeupdate', function () {
 					// vid_card.text(this.currentTime());
 					check_time_register(vid_id,this.currentTime())
 				})
 			}
 
-			video_time_register = {}
+			videos_time_register = {}
 
 			// Calls a function at a particular time for a particular video
 			function register_time_callback(v_id, vtime, callback) {
-				if (video_time_register["video_id"]) {
-					video_time_register["video_id"].push({						
+				if (videos_time_register[v_id]) {
+					videos_time_register[v_id].push({						
 						video_id: v_id,
 						video_time : vtime,
-						callback: callback
+						callback: callback,
+						activated: false
 					})
 				} else {
-					video_time_register["video_id"] = []
-					video_time_register["video_id"].push({						
+					videos_time_register[v_id] = []
+					videos_time_register[v_id].push({						
 						video_id: v_id,
 						video_time : vtime,
-						callback: callback
+						callback: callback,
+						activated: false,
 					})
 				}
 			}
 
 			function check_time_register(video_id,currentTime) {
-				
+				video_register = videos_time_register[video_id]
+
+				for (var index = 0; index < video_register.length; index++) {
+					var item = video_register[index];
+					if (item.activated == false) {
+						if (currentTime > item.video_time) {
+							item.callback(video_id,currentTime)
+							videos_time_register[video_id][index].activated = true
+						}
+					}
+				}
 			}
+			function reset_video_activations(video_id){
+				video_register = videos_time_register[video_id]
+				if(video_register) {
+					for (var index = 0; index < video_register.length; index++) {
+						 videos_time_register[video_id][index].activated = false
+						}
+					}
+				}
+				}
+			}
+
+			register_time_callback(2,0,console.log)
 
 
 
