@@ -1,0 +1,4 @@
+{"articles":[
+    { "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"somehwere", "videoSRC":"somewhereElse", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":"Visit this BLAGH"},
+    { "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"somehwere", "videoSRC":"somewhereElse", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":"Visit this BLAGH"},
+]}
