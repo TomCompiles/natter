@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/video-js.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/vex.css" />
+	<link rel="stylesheet" href="css/vex-theme-wireframe.css" />
 
 	<style>
 		video {
@@ -137,24 +139,24 @@
 	</nav>
 
 	<div class="modal fade" id="article-modal">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
 				<div class="modal-header">
-				  <h5 class="modal-title">Modal title</h5>
-				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				  </button>
 				</div>
 				<div class="modal-body">
-				  <p>Modal body text goes here.</p>
+					<p>Modal body text goes here.</p>
 				</div>
 				<div class="modal-footer">
-				  <button type="button" class="btn btn-primary">Save changes</button>
-				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
-			  </div>
 			</div>
-		  </div>
+		</div>
+	</div>
 
 
 	<!-- Scripts -->
@@ -169,23 +171,28 @@
 	<script src="js/bootstrap.min.js">
 
 	</script>
+	<script src="js/vex.combined.min.js"></script>
+	<script>
+		vex.defaultOptions.className = 'vex-theme-wireframe'
+	</script>
+	</script>
 	<script src="js/video.js"></script>
 
 	<script>
-		function change_visibility(component,new_visibility) {
-				if (new_visibility == 'show' || new_visibility == true) {
-					$(component).show()
-				} else {
-					$(component).hide()
-				}
+		function change_visibility(component, new_visibility) {
+			if (new_visibility == 'show' || new_visibility == true) {
+				$(component).show()
+			} else {
+				$(component).hide()
 			}
+		}
 
 		$(document).ready(function () {
 			main_content = $('#main-content')
 			vid = $('#my-video')
-			
+
 			vid_inner = $('.vjs-tech')
-		
+
 			vid.hide()
 
 			vid_card = $('#vid-card')
@@ -201,13 +208,17 @@
 			vid_card_tether.position()
 
 
-			vid_card.click(function (e) { 
+			vid_card.click(function (e) {
 				e.preventDefault();
 				video_player = videojs('my-video');
 				if (video_player.paused() == false) {
 					video_player.pause()
-				} else {
-					video_player.play()
+					vex.dialog.alert({
+						unsafeMessage: '<b>Hello World!</b>',
+						callback: function (value) {
+							video_player.play()
+						}
+					});
 				}
 			});
 
@@ -215,8 +226,13 @@
 				$('#article-modal').modal()
 			}
 
+			function update_card_text(params) {
+
+			}
+
 
 			function play_video(url) {
+				vid_id = 2
 				video_player = videojs('my-video');
 				video_player.src(url);
 				$('#my-video').show()
@@ -230,21 +246,49 @@
 					$('#my-video').hide()
 					show_article("hi")
 					vid_card.hide()
-					
+
 				});
 
 				video_player.on('playing', function () {
 					vid_card.show()
 					vid_card.position()
-					
+
 				});
 
 				video_player.on('playing', function () {
 					vid_card.show()
 					vid_card.position()
-					
+
 				});
+				video_player.on('timeupdate', function () {
+					// vid_card.text(this.currentTime());
+					check_time_register(vid_id,this.currentTime())
+				})
 			}
+
+			video_time_register = {}
+
+			// Calls a function at a particular time for a particular video
+			function register_time_callback(v_id, vtime, callback) {
+				if (video_time_register["video_id"]) {
+					video_time_register["video_id"].push({						
+						video_id: v_id,
+						video_time : vtime,
+						callback: callback
+					})
+				} else {
+					video_time_register["video_id"] = []
+					video_time_register["video_id"].push({						
+						video_id: v_id,
+						video_time : vtime,
+						callback: callback
+					})
+				}
+			}
+
+
+
+
 
 			$('.art-img').click(function (e) {
 				e.preventDefault();
