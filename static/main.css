@@ -1,7 +1,8 @@
 
-body {
+html, body {
 	background-color: #E0E0E0;
-	over
+	max-width: 100%;
+    overflow-x: hidden;
 }
 
 .navbar .natter-header {
@@ -17,8 +18,8 @@ body {
 }
 
 .navbar .mention-natter-header {
-	margin: 5px 2em 8px auto;
-	font-size: 25px;
+	margin: 5px 3em 8px auto;
+	font-size: 22px;
 	color: white;
 	font-family: 'One Day';
 	letter-spacing: 2px;
@@ -79,14 +80,14 @@ body {
 }
 
 .back-btn {
-	font-size: 42px !important;
+	font-size: 40px !important;
 	margin-left: 5px;
 	color: white;
 	font-weight: bold;
 }
 
 .vox-container {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 .voxpop-item {
