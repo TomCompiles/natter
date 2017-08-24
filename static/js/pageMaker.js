@@ -1,9 +1,9 @@
-var allArticles = [
-	{ "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]},
-	{ "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]}
-]
+// var allArticles = [
+// 	{ "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]},
+// 	{ "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]}
+// ]
 
-
+// var allArticles = window.allArticles;
 var type;
 var articleNo;
 function initialise(inType = "home"){
@@ -64,6 +64,9 @@ function displayList(articleList){
 		var article_number_attr = document.createAttribute("articleNo");
 		article_number_attr.value = articleNo;
 		card.children[0].setAttributeNode(article_number_attr);
+		var class_attr = document.createAttribute("class");       // Create a "class" attribute
+		class_attr.value = "video-starter";
+		card.children[0].setAttributeNode(class_attr);
 		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
 		card.children[1].children[1].innerHTML = article.title;
 		card.children[1].children[2].innerHTML = article.shortDesc;
@@ -87,6 +90,9 @@ function displayList(articleList){
 		var article_number_attr = document.createAttribute("articleNo");
 		article_number_attr.value = articleNo;
 		card.children[0].setAttributeNode(article_number_attr);
+		var class_attr = document.createAttribute("class");       // Create a "class" attribute
+		class_attr.value = "video-starter";
+		card.children[0].setAttributeNode(class_attr);
 		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
 		card.children[1].children[1].innerHTML = article.title;
 		card.children[1].children[2].innerHTML = article.shortDesc;
