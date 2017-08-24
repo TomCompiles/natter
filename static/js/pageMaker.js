@@ -21,7 +21,7 @@ function initialise(type){
 
 function displayList(articleList){
 	//TODO How many items per page?
-	for(; articleNo < articleList.length; articleNo++){
+	for(; articleNo < articleList.length-1; articleNo++){
 		article = articleList[articleNo];
 		//Clone the template with all its children
 		var newNode = document.getElementByID("Template").cloneNode(true);
@@ -33,6 +33,19 @@ function displayList(articleList){
 		card.children[1].children[1].innerHTML = article.title;
 		card.children[1].children[2].innerHTML = article.shortDesc;
 	}
+	//Creates the Latest thing on the bottom
+	article = articleList[articleNo];
+	//Clone the template with all its children
+	var newNode = document.getElementByID("Template").cloneNode(true);
+	var latestHeader = document.createElement("h4");
+	newNode.firstChild.firstChild.prepend(latestHeader);
+	//Grabs the actual card
+	var card = newNode.firstChild.firstChild.firstChild;
+	//Sets the icon for the article to the one linked in the JSON
+	card.children[0].src = article.imgSRC;
+	card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
+	card.children[1].children[1].innerHTML = article.title;
+	card.children[1].children[2].innerHTML = article.shortDesc;
 }
 
 function displayVoxPops(pictureList){
