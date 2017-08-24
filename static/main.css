@@ -2,7 +2,11 @@
 html, body {
 	background-color: #E0E0E0;
 	max-width: 100%;
-    overflow-x: hidden;
+	overflow-x: hidden;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 .navbar .natter-header {
@@ -72,7 +76,7 @@ html, body {
 .icon-bar a {
     float: left; 
     text-align: center; 
-    width: 33%; 
+    width: 25%; 
     padding: 12px 0;
     transition: all 0.3s ease;
     color: black; 
@@ -118,8 +122,4 @@ html, body {
 
 .active {
     background-color: #F1F1F1;
-}
-
-.category-view {
-
 }
