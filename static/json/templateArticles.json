@@ -1,3 +1,4 @@
 allArticles = [
+    { "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]},
     { "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]}
 ]
