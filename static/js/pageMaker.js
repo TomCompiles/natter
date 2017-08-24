@@ -1,9 +1,9 @@
 var type;
 var articleNo;
-function initialise(type){
-	type = 0;
+function initialise(inType = "home"){
 	articleNo = 0;
 	var articleList;
+	type = inType;
 	//This entire method will put together the list of articles we'll actually be using for the other methods
 	/*if(type == something){
 		for(x = 0; x < allArticles.length; x++){
@@ -21,7 +21,9 @@ function initialise(type){
 
 function displayList(articleList){
 	//TODO How many items per page?
-	for(; articleNo < articleList.length-1; articleNo++){
+	var noOfItems = (type=="home") ? articleList.length-1:articleList.length;
+
+	for(; articleNo < noOfitems; articleNo++){
 		article = articleList[articleNo];
 		//Clone the template with all its children
 		var newNode = document.getElementByID("Template").cloneNode(true);
@@ -32,20 +34,25 @@ function displayList(articleList){
 		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
 		card.children[1].children[1].innerHTML = article.title;
 		card.children[1].children[2].innerHTML = article.shortDesc;
+		document.body.appendChild(newNode);
 	}
-	//Creates the Latest thing on the bottom
-	article = articleList[articleNo];
-	//Clone the template with all its children
-	var newNode = document.getElementByID("Template").cloneNode(true);
-	var latestHeader = document.createElement("h4");
-	newNode.firstChild.firstChild.prepend(latestHeader);
-	//Grabs the actual card
-	var card = newNode.firstChild.firstChild.firstChild;
-	//Sets the icon for the article to the one linked in the JSON
-	card.children[0].src = article.imgSRC;
-	card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
-	card.children[1].children[1].innerHTML = article.title;
-	card.children[1].children[2].innerHTML = article.shortDesc;
+
+	if(type = "home"){
+		//Creates the Latest thing on the bottom
+		article = articleList[articleNo];
+		//Clone the template with all its children
+		var newNode = document.getElementByID("Template").cloneNode(true);
+		var latestHeader = document.createElement("h4");
+		newNode.firstChild.firstChild.insertBefore(latestHeader, newNode.firstChild.firstChild.firstChild);
+		//Grabs the actual card
+		var card = newNode.firstChild.firstChild.firstChild;
+		//Sets the icon for the article to the one linked in the JSON
+		card.children[0].src = article.imgSRC;
+		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
+		card.children[1].children[1].innerHTML = article.title;
+		card.children[1].children[2].innerHTML = article.shortDesc;
+		document.body.appendChild(newNode);
+	}
 }
 
 function displayVoxPops(pictureList){
@@ -58,6 +65,7 @@ function displayVoxPops(pictureList){
 		var newImg = document.createElement("img");
 		newImg.class = "voxpop-item";
 		newImg.src = picture.imgSRC;
+		newDiv.appendChild(newImg);
 	}
 }
 
