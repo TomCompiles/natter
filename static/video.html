@@ -20,10 +20,10 @@
 			elements: {
 				selectors: ['.my-page']
 			},
-		// Only show the progress on regular and ajax-y page navigation,
-		// not every request
-		restartOnRequestAfter: false
-			}
+			// Only show the progress on regular and ajax-y page navigation,
+			// not every request
+			restartOnRequestAfter: false
+		}
 	</script>
 	<script data-pace-options='{ "ajax": false }' src="js/pace.min.js"></script>
 	<link rel="stylesheet" href="css/pace.css">
@@ -65,14 +65,14 @@
 
 		#vid-card {
 			z-index: 1051;
-			width: 70%;
+			/* width: 70%; */
 		}
 	</style>
 
 
 	<div id="vid-card" class="card" style="display:none">
 		<div class="card-block">
-			<a href="#"><i class="fa fa-globe"></i></a> Find out more about this place.
+			News UK Building | <a href="#"><i class="fa fa-star"></i></a>
 		</div>
 	</div>
 
@@ -80,7 +80,7 @@
 		<span class="h1 natter-header text-center">NATTER</span>
 	</nav>
 
-	<div class="container-fluid" id='main-content'>
+	<div class="container-fluid" id='main-content' style="display:none">
 
 		<div class="row">
 			<div class="col-sm-12 col-center">
@@ -205,6 +205,20 @@
 			}
 		}
 
+		function tether_card(){
+			vid_card = $('#vid-card')
+			vid = $('#my-video')
+			new Tether({
+				element: vid_card,
+				target: vid,
+				attachment: 'top center',
+				targetAttachment: 'top center',
+				// targetModifier: 'hidden'
+				offset: '-15px 0px',
+				enabled: true
+			})
+		}
+
 		$(document).ready(function () {
 			main_content = $('#main-content')
 			vid = $('#my-video')
@@ -214,16 +228,7 @@
 			vid.hide()
 
 			vid_card = $('#vid-card')
-			vid_card_tether = new Tether({
-				element: vid_card,
-				target: vid_inner,
-				attachment: 'top center',
-				targetAttachment: 'top center',
-				// targetModifier: 'hidden'
-				offset: '10px 10px',
-				enabled: false
-			});
-			vid_card_tether.position()
+			tether_card()
 
 
 			vid_card.click(function (e) {
@@ -257,9 +262,9 @@
 				video_player.ready(function () {
 					video_player.play();
 					reset_video_activations(vid_id)
-					vid_card_tether.position()
+					tether_card()
 				});
-				vid_card_tether.position()
+			
 
 				video_player.on('ended', function () {
 					$('#my-video').hide()
@@ -270,7 +275,7 @@
 
 				video_player.on('playing', function () {
 					// vid_card.show()
-					vid_card.position()
+					// vid_card.position()
 
 
 				});
@@ -328,8 +333,11 @@
 			function show_card(id, time) {
 				// in future get card text from id
 				// etc
+
+
+				// card_details = get_card_details()
 				vid_card.show()
-				vid_card.position()
+				tether_card()
 			}
 
 
@@ -357,11 +365,10 @@
 				Pace.stop()
 				$('#my-video').show()
 				video_player.play();
-				// reset_video_activations(vid_id)
-				// vid_card_tether.position()
 			});
 
 			video_player.on('ended', function () {
+				main_content.show()
 				$('#my-video').hide()
 				// show_article("hi")
 				// vid_card.hide()
