@@ -9,6 +9,24 @@
 	<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<script>
+		paceOptions = {
+			// Disable the 'elements' source
+
+			ajax: false, // disabled
+			document: false, // disabled
+			eventLag: false, // disabled
+			elements: {
+				selectors: ['.my-page']
+			},
+			// Only show the progress on regular and ajax-y page navigation,
+			// not every request
+			restartOnRequestAfter: false
+		}
+	</script>
+	<script data-pace-options='{ "ajax": false }' src="js/pace.min.js"></script>
+	<link rel="stylesheet" href="css/pace.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/video-js.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -25,7 +43,7 @@
 <body>
 	<!-- width="640" height="264"  style="display:none"-->
 
-	<video id="my-video" class="video-js vjs-default-skin vjs-fluid" poster="http://placekitten.com/200/300" data-setup="{}">
+	<video id="my-video" class="video-js vjs-default-skin vjs-fluid" controls poster="http://placekitten.com/200/300" data-setup="{}">
 		<!-- <source src="https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4" type='video/mp4'> -->
 		<p class="vjs-no-js">
 			To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -37,9 +55,9 @@
 			position: absolute;
 			height: 100%;
 			width: 100%;
-			/* position: relative; */
-			width: 100vw;
-			height: 100vw;
+			/* position: rela<script src="/pace/pace.js"></script>tive; */
+			/* width: 100vw; */
+			/* height: 100vw; */
 			top: 0;
 			left: 0;
 			z-index: 1050;
@@ -47,14 +65,22 @@
 
 		#vid-card {
 			z-index: 1051;
-			width: 70%;
+			/* width: 70%; */
 		}
 	</style>
 
+<div class="fab_container" id="logo-masterfab">
+<div class="fab"><span>+</span></div>
+</div>
+
+
+<div class="fab_container" id="home-masterfab">
+<div class="fab"><span>+</span></div>
+</div>
 
 	<div id="vid-card" class="card" style="display:none">
 		<div class="card-block">
-			<a href="#"><i class="fa fa-globe"></i></a> Find out more about this place.
+			News UK Building | <a href="#"><i class="fa fa-star"></i></a>
 		</div>
 	</div>
 
@@ -62,7 +88,7 @@
 		<span class="h1 natter-header text-center">NATTER</span>
 	</nav>
 
-	<div class="container-fluid" id='main-content'>
+	<div class="container-fluid" id='main-content' style="display:none">
 
 		<div class="row">
 			<div class="col-sm-12 col-center">
@@ -177,15 +203,47 @@
 	</script>
 	</script>
 	<script src="js/video.js"></script>
+	<script src="js/dash.all.min.js"></script>
+	<script src="js/videojs-dash.min.js"></script>
 
 	<script>
-		function change_visibility(component, new_visibility) {
-			if (new_visibility == 'show' || new_visibility == true) {
-				$(component).show()
-			} else {
-				$(component).hide()
-			}
+		function tether_card() {
+			//Creates a new tether for the card 
+			vid_card = $('#vid-card')
+			vid = $('#my-video')
+			new Tether({
+				element: vid_card,
+				target: vid,
+				attachment: 'top center',
+				targetAttachment: 'top center',
+				// targetModifier: 'hidden'
+				offset: '-15px 0px',
+				enabled: true
+			})
 		}
+		function tether_buttons(params) {
+				logo_fab = $('#logo-masterfab')
+				home_fab = $('#home-masterfab')
+				
+				new Tether({
+					element: logo_fab,
+					target: vid,
+					attachment: 'bottom right',
+					targetAttachment: 'top center',
+					// targetModifier: 'hidden'
+					offset: '-15px 0px',
+					enabled: true
+				})
+				new Tether({
+					element: home_fab,
+					target: vid,
+					attachment: 'center center',
+					targetAttachment: 'center center',
+					// targetModifier: 'hidden'
+					offset: '-15px 0px',
+					enabled: true
+				})
+			}
 
 		$(document).ready(function () {
 			main_content = $('#main-content')
@@ -196,16 +254,7 @@
 			vid.hide()
 
 			vid_card = $('#vid-card')
-			vid_card_tether = new Tether({
-				element: vid_card,
-				target: vid_inner,
-				attachment: 'top left',
-				targetAttachment: 'top center',
-				// targetModifier: 'hidden'
-				offset: '-10px 0px',
-				enabled: false
-			});
-			vid_card_tether.position()
+			tether_card()
 
 
 			vid_card.click(function (e) {
@@ -235,13 +284,15 @@
 				vid_id = 2
 				video_player = videojs('my-video');
 				video_player.src(url);
-				$('#my-video').show()
+				// debugger;
 				video_player.ready(function () {
+					$('#my-video').show()
 					video_player.play();
-					reset_video_activations(video_id)
-					vid_card_tether.position()
+					reset_video_activations(vid_id)
+					tether_card()
+					tether_buttons()
 				});
-				vid_card_tether.position()
+
 
 				video_player.on('ended', function () {
 					$('#my-video').hide()
@@ -252,13 +303,14 @@
 
 				video_player.on('playing', function () {
 					// vid_card.show()
-					vid_card.position()
+					// vid_card.position()
+
 
 				});
 
 				video_player.on('timeupdate', function () {
 					// vid_card.text(this.currentTime());
-					check_time_register(vid_id,this.currentTime())
+					check_time_register(vid_id, this.currentTime())
 				})
 			}
 
@@ -267,65 +319,114 @@
 			// Calls a function at a particular time for a particular video
 			function register_time_callback(v_id, vtime, callback) {
 				if (videos_time_register[v_id]) {
-					videos_time_register[v_id].push({						
+					videos_time_register[v_id].push({
 						video_id: v_id,
-						video_time : vtime,
+						video_time: vtime,
 						callback: callback,
 						activated: false
 					})
 				} else {
 					videos_time_register[v_id] = []
-					videos_time_register[v_id].push({						
+					videos_time_register[v_id].push({
 						video_id: v_id,
-						video_time : vtime,
+						video_time: vtime,
 						callback: callback,
 						activated: false,
 					})
 				}
 			}
 
-			function check_time_register(video_id,currentTime) {
+			function check_time_register(video_id, currentTime) {
 				video_register = videos_time_register[video_id]
 
 				for (var index = 0; index < video_register.length; index++) {
 					var item = video_register[index];
 					if (item.activated == false) {
 						if (currentTime > item.video_time) {
-							item.callback(video_id,currentTime)
+							item.callback(video_id, currentTime)
 							videos_time_register[video_id][index].activated = true
 						}
 					}
 				}
 			}
-			function reset_video_activations(video_id){
+			function reset_video_activations(video_id) {
 				video_register = videos_time_register[video_id]
-				if(video_register) {
+				if (video_register) {
 					for (var index = 0; index < video_register.length; index++) {
-						 videos_time_register[video_id][index].activated = false
-						}
+						videos_time_register[video_id][index].activated = false
 					}
-				}
 				}
 			}
 
-			register_time_callback(2,0,console.log)
+			function show_card(id, time) {
+				// in future get card text from id
+				// etc
 
 
+				// card_details = get_card_details()
+				vid_card.show()
+				tether_card()
+				tether_buttons()
+			}
+
+
+			register_time_callback(2, 1, show_card)
 
 
 
 			$('.art-img').click(function (e) {
 				e.preventDefault();
 				img = e.target
-				vid_url = "http://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4"
+				// vid_url = { src: 'https://s3-eu-west-1.amazonaws.com/transcoded-content.natter-london.com/job1/output_file.mpd', type: 'application/dash+xml'}
+				vid_url = "https://s3-eu-west-1.amazonaws.com/content.natter-london.com/sophie+video+1.mp4"
 				// vid-url = e.attr('url')
 				play_video(vid_url)
 
 
 
-			});
-		});
-	</script>
 
+			});
+
+
+			//play the intro video 
+			video_player = videojs('my-video');
+			video_player.src("http://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4");
+
+			video_player.ready(function () {
+				Pace.stop()
+				$('#my-video').show()
+				video_player.play();
+			});
+
+			video_player.on('ended', function () {
+				main_content.show()
+				$('#my-video').hide()
+				// show_article("hi")
+				// vid_card.hide()
+
+			});
+
+			video_player.on('playing', function () {
+				// vid_card.show()
+				// vid_card.position()
+
+
+			});
+
+			// video_player.on('timeupdate', function () {
+			// 	// vid_card.text(this.currentTime());
+			// 	check_time_register(vid_id, this.currentTime())
+			// })
+
+
+			
+
+			
+
+
+
+		});
+			// Injected fab button
+			</script>
 
 </body>
