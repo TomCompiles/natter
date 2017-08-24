@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var allArticles = [{
     "title": "Natter",
     "genre": "Testing",
@@ -20,7 +21,14 @@ var allArticles = [{
     "placeDesc": ["Visit this BLAGH", "0", "0"]
 }]
 
+=======
+// var allArticles = [
+// 	{ "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]},
+// 	{ "title":"Natter", "genre":"Testing", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"BLAAAAAGH", "longDesc":"BLAAAAAAAAAAAAAAAGH", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this BLAGH","0","0"]}
+// ]
+>>>>>>> master
 
+// var allArticles = window.allArticles;
 var type;
 var articleNo;
 
@@ -62,6 +70,7 @@ var categories = [ {"genre":"Music",	"imgSRC":"http://immarwaiktissad.com/wp-con
 				   {"genre":"Sciences",	"imgSRC":"http://immarwaiktissad.com/wp-content/uploads/2016/03/300x100.jpg", "Desc":"BLAH"}, 
 				   {"genre":"Lifestyle","imgSRC": "http://immarwaiktissad.com/wp-content/uploads/2016/03/300x100.jpg", "Desc":"BLAH"}];
 
+<<<<<<< HEAD
 function searchArticles(allArticles, criteria, value) {
     var articleList = [];
     if (criteria == 0) {
@@ -137,6 +146,54 @@ function displayList(articleList) {
             document.getElementById("main-view").insertBefore(newNode, document.getElementById("main-view").children[document.getElementById("main-view").children.length]);
         }
     }
+=======
+	for(; articleNo < noOfItems; articleNo++){
+		article = articleList[articleNo];
+		//Clone the template with all its children
+		var newNode = document.getElementById("Template").cloneNode(true);
+		newNode.style = document.getElementById("Template").style;
+		//Grabs the actual card
+		var card = newNode.children[0].children[0].children[0];
+		//Sets the icon for the article to the one linked in the JSON
+		card.children[0].src = article.imgSRC;
+		var article_number_attr = document.createAttribute("articleNo");
+		article_number_attr.value = articleNo;
+		card.children[0].setAttributeNode(article_number_attr);
+		var class_attr = document.createAttribute("class");       // Create a "class" attribute
+		class_attr.value = "video-starter";
+		card.children[0].setAttributeNode(class_attr);
+		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
+		card.children[1].children[1].innerHTML = article.title;
+		card.children[1].children[2].innerHTML = article.shortDesc;
+		document.getElementById("main-view").insertBefore(newNode,document.getElementById("main-view").children[document.getElementById("main-view").children.length]);
+	}
+
+	if(type = "home"){
+		//Creates the Latest thing on the bottom
+		article = articleList[articleNo];
+		//Clone the template with all its children
+		console.log(article);
+		var newNode = document.getElementById("Template").cloneNode(true);
+		newNode.style = document.getElementById("Template").style;
+		newNode.className += " last";
+		var latestHeader = document.createElement("h4");
+		newNode.children[0].children[0].prepend(latestHeader);
+		//Grabs the actual card
+		var card = newNode.children[0].children[0].children[1];
+		//Sets the icon for the article to the one linked in the JSON
+		card.children[0].src = article.imgSRC;
+		var article_number_attr = document.createAttribute("articleNo");
+		article_number_attr.value = articleNo;
+		card.children[0].setAttributeNode(article_number_attr);
+		var class_attr = document.createAttribute("class");       // Create a "class" attribute
+		class_attr.value = "video-starter";
+		card.children[0].setAttributeNode(class_attr);
+		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
+		card.children[1].children[1].innerHTML = article.title;
+		card.children[1].children[2].innerHTML = article.shortDesc;
+		document.getElementById("main-view").insertBefore(newNode,document.getElementById("main-view").children[document.getElementById("main-view").children.length]);
+	}
+>>>>>>> master
 }
 
 function displayVoxPops(pictureList) {
