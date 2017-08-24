@@ -56,8 +56,8 @@
 			height: 100%;
 			width: 100%;
 			/* position: rela<script src="/pace/pace.js"></script>tive; */
-			width: 100vw;
-			height: 100vw;
+			/* width: 100vw; */
+			/* height: 100vw; */
 			top: 0;
 			left: 0;
 			z-index: 1050;
@@ -69,6 +69,14 @@
 		}
 	</style>
 
+<div class="fab_container" id="logo-masterfab">
+<div class="fab"><span>+</span></div>
+</div>
+
+
+<div class="fab_container" id="home-masterfab">
+<div class="fab"><span>+</span></div>
+</div>
 
 	<div id="vid-card" class="card" style="display:none">
 		<div class="card-block">
@@ -199,15 +207,8 @@
 	<script src="js/videojs-dash.min.js"></script>
 
 	<script>
-		function change_visibility(component, new_visibility) {
-			if (new_visibility == 'show' || new_visibility == true) {
-				$(component).show()
-			} else {
-				$(component).hide()
-			}
-		}
-
-		function tether_card(){
+		function tether_card() {
+			//Creates a new tether for the card 
 			vid_card = $('#vid-card')
 			vid = $('#my-video')
 			new Tether({
@@ -220,6 +221,29 @@
 				enabled: true
 			})
 		}
+		function tether_buttons(params) {
+				logo_fab = $('#logo-masterfab')
+				home_fab = $('#home-masterfab')
+				
+				new Tether({
+					element: logo_fab,
+					target: vid,
+					attachment: 'bottom right',
+					targetAttachment: 'top center',
+					// targetModifier: 'hidden'
+					offset: '-15px 0px',
+					enabled: true
+				})
+				new Tether({
+					element: home_fab,
+					target: vid,
+					attachment: 'center center',
+					targetAttachment: 'center center',
+					// targetModifier: 'hidden'
+					offset: '-15px 0px',
+					enabled: true
+				})
+			}
 
 		$(document).ready(function () {
 			main_content = $('#main-content')
@@ -260,13 +284,15 @@
 				vid_id = 2
 				video_player = videojs('my-video');
 				video_player.src(url);
-				$('#my-video').show()
+				// debugger;
 				video_player.ready(function () {
+					$('#my-video').show()
 					video_player.play();
 					reset_video_activations(vid_id)
 					tether_card()
+					tether_buttons()
 				});
-			
+
 
 				video_player.on('ended', function () {
 					$('#my-video').hide()
@@ -340,6 +366,7 @@
 				// card_details = get_card_details()
 				vid_card.show()
 				tether_card()
+				tether_buttons()
 			}
 
 
@@ -350,10 +377,11 @@
 			$('.art-img').click(function (e) {
 				e.preventDefault();
 				img = e.target
-				vid_url = { src: 'https://s3-eu-west-1.amazonaws.com/transcoded-content.natter-london.com/job1/output_file.mpd', type: 'application/dash+xml'}
+				// vid_url = { src: 'https://s3-eu-west-1.amazonaws.com/transcoded-content.natter-london.com/job1/output_file.mpd', type: 'application/dash+xml'}
+				vid_url = "https://s3-eu-west-1.amazonaws.com/content.natter-london.com/sophie+video+1.mp4"
 				// vid-url = e.attr('url')
 				play_video(vid_url)
-			
+
 
 
 
@@ -391,9 +419,14 @@
 			// })
 
 
+			
+
+			
+
+
 
 		});
-	</script>
-
+			// Injected fab button
+			</script>
 
 </body>
