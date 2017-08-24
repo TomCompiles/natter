@@ -66,7 +66,7 @@ html, body {
     overflow: auto; 
     position: fixed;
     bottom: 0;
-    opacity: .9;
+    opacity: .95;
 }
 
 .icon-bar a {
@@ -80,7 +80,7 @@ html, body {
 }
 
 .back-btn {
-	font-size: 40px !important;
+	font-size: 35px !important;
 	margin-left: 5px;
 	color: white;
 	font-weight: bold;
@@ -106,6 +106,20 @@ html, body {
 	margin-top: 10px;
 }
 
+.category-card {
+	box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+	width: 95% !important; 
+	margin-top: 15px;
+}
+
+#clickable-card:active {
+	border: 1.5px solid #616161 !important;
+}
+
 .active {
     background-color: #F1F1F1;
+}
+
+.category-view {
+
 }
