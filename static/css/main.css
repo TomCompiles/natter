@@ -65,4 +65,15 @@
     src: url('../fonts/ONEDAY.ttf');
 }
 
+#my-video {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+}
+#vid-card {
+    z-index: 1051;
+}
 

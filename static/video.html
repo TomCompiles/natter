@@ -13,7 +13,6 @@
 	<script>
 		paceOptions = {
 			// Disable the 'elements' source
-
 			ajax: false, // disabled
 			document: false, // disabled
 			eventLag: false, // disabled
@@ -43,29 +42,19 @@
 <body>
 	<!-- width="640" height="264"  style="display:none"-->
 
-	<video id="my-video" class="video-js vjs-default-skin vjs-fluid" controls poster="http://placekitten.com/200/300" data-setup="{}">
-		<!-- <source src="https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4" type='video/mp4'> -->
-		<p class="vjs-no-js">
-			To view this video please enable JavaScript, and consider upgrading to a web browser that
-			<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-		</p>we
+	<video id="my-video" class="video-js vjs-default-skin vjs-fluid" controls data-setup="{}">
 	</video>
 	<style>
 		#my-video {
 			position: absolute;
 			height: 100%;
 			width: 100%;
-			/* position: rela<script src="/pace/pace.js"></script>tive; */
-			/* width: 100vw; */
-			/* height: 100vw; */
 			top: 0;
 			left: 0;
 			z-index: 1050;
 		}
-
 		#vid-card {
 			z-index: 1051;
-			/* width: 70%; */
 		}
 	</style>
 
@@ -208,7 +197,7 @@
 
 	<script>
 		function tether_card() {
-			//Creates a new tether for the card 
+			//Creates a new tether for the card
 			vid_card = $('#vid-card')
 			vid = $('#my-video')
 			new Tether({
@@ -224,7 +213,7 @@
 		function tether_buttons(params) {
 				logo_fab = $('#logo-masterfab')
 				home_fab = $('#home-masterfab')
-				
+
 				new Tether({
 					element: logo_fab,
 					target: vid,
@@ -388,7 +377,7 @@
 			});
 
 
-			//play the intro video 
+			//play the intro video
 			video_player = videojs('my-video');
 			video_player.src("http://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4");
 
