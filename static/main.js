@@ -10,6 +10,7 @@ $(document).ready(function () {
 	// Hide the category view initially until chosen to view
 	$('#category-view').hide();
 	$('#video-view').hide();
+	$('#global-view').hide();
 
 	// Handle the carousel behaviour
 	$('.slick-carousel').slick({
@@ -20,7 +21,7 @@ $(document).ready(function () {
 
 	// This will handle the showing of the category view
 	$('.show-category').click(function () {
-		console.log('showing category')
+		$('#global-view').fadeOut(700);
 		$('#video-view').fadeOut(700);
 		$('#main-view').fadeOut(700);
 		$('#category-view').fadeIn(1400);
@@ -28,7 +29,7 @@ $(document).ready(function () {
 
 	// This will handle the showing of the main view
 	$('.show-main').click(function () {
-		console.log('showing main')
+		$('#global-view').fadeOut(700);
 		$('#video-view').fadeOut(700);
 		$('#category-view').fadeOut(700);
 		$('#main-view').fadeIn(1400);
@@ -36,10 +37,18 @@ $(document).ready(function () {
 
 	// This will handle showing video view
 	$('.show-video').click(function () {
-		console.log('showing video')
+		$('#global-view').fadeOut(700);
 		$('#category-view').fadeOut(700);
 		$('#main-view').fadeOut(700);
 		$('#video-view').fadeIn(1400);
+	});
+
+	// This will handle showing video view
+	$('.show-global').click(function () {
+		$('#video-view').fadeOut(700);
+		$('#category-view').fadeOut(700);
+		$('#main-view').fadeOut(700);
+		$('#global-view').fadeIn(1400);
 	});
 
 });
