@@ -25,6 +25,7 @@ $(document).ready(function () {
 		$('#video-view').fadeOut(700);
 		$('#main-view').fadeOut(700);
 		$('#category-view').fadeIn(1400);
+		initialise("Catagories");
 	});
 
 	// This will handle the showing of the main view
