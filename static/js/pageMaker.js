@@ -61,6 +61,9 @@ function displayList(articleList){
 		var card = newNode.children[0].children[0].children[0];
 		//Sets the icon for the article to the one linked in the JSON
 		card.children[0].src = article.imgSRC;
+		var article_number_attr = document.createAttribute("articleNo");
+		article_number_attr.value = articleNo;
+		card.children[0].setAttributeNode(article_number_attr);
 		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
 		card.children[1].children[1].innerHTML = article.title;
 		card.children[1].children[2].innerHTML = article.shortDesc;
@@ -81,6 +84,9 @@ function displayList(articleList){
 		var card = newNode.children[0].children[0].children[1];
 		//Sets the icon for the article to the one linked in the JSON
 		card.children[0].src = article.imgSRC;
+		var article_number_attr = document.createAttribute("articleNo");
+		article_number_attr.value = articleNo;
+		card.children[0].setAttributeNode(article_number_attr);
 		card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
 		card.children[1].children[1].innerHTML = article.title;
 		card.children[1].children[2].innerHTML = article.shortDesc;
