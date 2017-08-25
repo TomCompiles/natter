@@ -106,7 +106,7 @@ function displayList(articleList) {
             article_number_attr.value = articleNo;
             card.children[0].setAttributeNode(article_number_attr);
             var class_attr = document.createAttribute("class");       // Create a "class" attribute
-            class_attr.value = "video-starter";
+            class_attr.value = "video-starter img-fluid";
             card.children[0].setAttributeNode(class_attr);
             card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
             card.children[1].children[1].innerHTML = article.title;
@@ -131,7 +131,8 @@ function displayList(articleList) {
             article_number_attr.value = articleNo;
             card.children[0].setAttributeNode(article_number_attr);
             var class_attr = document.createAttribute("class");       // Create a "class" attribute
-            class_attr.value = "video-starter";
+            class_attr.value = "video-starter img-fluid";
+            card.children[0].setAttributeNode(class_attr);
             card.children[1].children[0].innerHTML = article.genre + " &#8226; " + article.date;
             card.children[1].children[1].innerHTML = article.title;
             card.children[1].children[2].innerHTML = article.shortDesc;
