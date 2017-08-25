@@ -196,7 +196,7 @@
 	<script src="js/videojs-dash.min.js"></script>
 
 	<script>
-		function tether_card() {
+		function show_card() {
 			//Creates a new tether for the card
 			vid_card = $('#vid-card')
 			vid = $('#my-video')
@@ -303,20 +303,20 @@
 				})
 			}
 
-			videos_time_register = {}
+			article_cards_register = {}
 
 			// Calls a function at a particular time for a particular video
-			function register_time_callback(v_id, vtime, callback) {
-				if (videos_time_register[v_id]) {
-					videos_time_register[v_id].push({
+			function register_card_callback(v_id, vtime, callback) {
+				if (article_cards_register[v_id]) {
+					article_cards_register[v_id].push({
 						video_id: v_id,
 						video_time: vtime,
 						callback: callback,
 						activated: false
 					})
 				} else {
-					videos_time_register[v_id] = []
-					videos_time_register[v_id].push({
+					article_cards_register[v_id] = []
+					article_cards_register[v_id].push({
 						video_id: v_id,
 						video_time: vtime,
 						callback: callback,
@@ -325,24 +325,24 @@
 				}
 			}
 
-			function check_time_register(video_id, currentTime) {
-				video_register = videos_time_register[video_id]
+			function check_card_register(video_id, currentTime) {
+				video_register = article_cards_register[video_id]
 
 				for (var index = 0; index < video_register.length; index++) {
 					var item = video_register[index];
 					if (item.activated == false) {
 						if (currentTime > item.video_time) {
 							item.callback(video_id, currentTime)
-							videos_time_register[video_id][index].activated = true
+							article_cards_register[video_id][index].activated = true
 						}
 					}
 				}
 			}
-			function reset_video_activations(video_id) {
-				video_register = videos_time_register[video_id]
+			function reset_video_card_activations(video_id) {
+				video_register = article_cards_register[video_id]
 				if (video_register) {
 					for (var index = 0; index < video_register.length; index++) {
-						videos_time_register[video_id][index].activated = false
+						article_cards_register[video_id][index].activated = false
 					}
 				}
 			}
@@ -404,7 +404,7 @@
 
 			// video_player.on('timeupdate', function () {
 			// 	// vid_card.text(this.currentTime());
-			// 	check_time_register(vid_id, this.currentTime())
+			// 	check_card_register(vid_id, this.currentTime())
 			// })
 
 

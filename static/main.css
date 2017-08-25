@@ -137,4 +137,29 @@ html, body {
 }
 #vid-card {
 	z-index: 1051;
+	position: fixed;
+	width: 100%;
+	top: 0%
+
+}
+
+#vid-pause-icon {
+	position: fixed;
+	border-radius: 30px;
+	background-color: black;
+	bottom: 2.5%;
+	left: 2.5%;
+	background-color: white;
+	z-index: 1051;
+
+}
+#vid-end-icon {
+	position: fixed;
+	border-radius: 30px;
+	bottom: 2.5%;
+	right: 2.5%;
+	background-color: black;
+	background-color: white;
+	z-index: 1051;
+
 }

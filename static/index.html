@@ -47,18 +47,50 @@
 <body>
         <!--
         ///////////////////////////
-        Hidden Components
+        Hidden Components style="display:none"
         //////////////////////////
         -->
 
         <video id="my-video" class="video-js vjs-default-skin vjs-fluid" data-setup="{}">
         </video>
 
-        <div id="vid-card" class="card" style="display:none">
+        <div id="vid-card" class="card text-center" style="display:none">
             <div class="card-block">
-                News UK Building | <a href="#"><i class="fa fa-star"></i></a>
+                <span>  </span> | <a id="vid-card-star" href="#"><i class="fa fa-star"></i></a>
             </div>
         </div>
+
+        <div id="vid-pause-icon" class="card" style="display:none">
+            <div class="card-block">
+                <i class="fa fa-star"></i></a>
+            </div>
+        </div>
+
+        <div id="vid-end-icon" class="card" style="display:none">
+            <div class="card-block">
+                <i class="fa fa-home"></i></a>
+            </div>
+        </div>
+
+
+		<div class="modal fade" id="article-modal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Modal body text goes here.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Finished Reading</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	<!--
 		///////////////////////////
@@ -270,7 +302,15 @@
 			<a class="show-global"><i class="fa fa-globe"></i></a>
 		</div>
 	</div>
-
+	<div class="container-fluid category-card" id="vidtemplate" style="display: none;">
+			<div class="row">
+				<div class="col-md-6 col-center">
+					<div class="card" id="clickable-card">
+						<img class="card-img-top" src="http://immarwaiktissad.com/wp-content/uploads/2016/03/300x100.jpg" alt="headline image">
+					</div>
+				</div>
+			</div>
+		</div>
 	<!--
 		///////////////////////////
 		        GLOBAL VIEW

@@ -78,7 +78,6 @@ function searchArticles(allArticles, criteria, value) {
             var inList = false;
             console.log(alreadyAddedCategories.length);
             for (var x = 0; x < alreadyAddedCategories.length; x++) {
-
                 if (allArticles[i].genre == alreadyAddedCategories[x]) {
                     inList = true;
                     break
