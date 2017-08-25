@@ -5,6 +5,7 @@
 
 card_showing = false
 
+var current_article = null
 
 //Article functions
 function get_article(id) {
@@ -64,8 +65,18 @@ $('#vid-end-icon').click(function (e) {
     hide_vid_buttons()
     hide_card()
     $('#my-video').hide()
-    show_article("hi")
+    show_article()
 });
+
+function show_article() {
+    article = current_article
+    title = article.articleTitle
+    content = article.articleContent
+    $('#article-modal').modal()
+    $('.modal-title').text(title)
+    $('.modal-body p').text(content)
+
+}
 
 var current_card = null
 function card_click() {
@@ -130,8 +141,9 @@ function play_video(article) {
     video_player.on('ended', function () {
         hide_vid_buttons()
         $('#my-video').hide()
-        show_article("hi")
         vid_card.hide()
+        show_article()
+
 
     });
 
@@ -210,9 +222,7 @@ function register_article_cards(article) {
 
 
 
-function show_article(content) {
-    $('#article-modal').modal()
-}
+
 
 //this class should be given to anything that is meant to start a video
 $('.video-starter').click(function (e) {
@@ -221,6 +231,7 @@ $('.video-starter').click(function (e) {
     img = e.target;
     index_of_article = parseInt(img.getAttribute("articleNo"))
     article = allArticles[index_of_article]
+    current_article = article
     vid_url = article.videoSRC;
     // vid_url = "https://s3-eu-west-1.amazonaws.com/content.natter-london.com/sophie+video+1.mp4"
     // vid-url = e.attr('url')
