@@ -18,11 +18,17 @@ var allArticles = [{
     "longDesc": "BLAAAAAAAAAAAAAAAGH",
     "placeTimes": ["0:00", "0:02", "0:05"],
     "placeDesc": ["Visit this BLAGH", "0", "0"]
-}]
+},
+{ "title":"Natter", "genre":"Science", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"science description", "longDesc":"sciencccce", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this science museum","0","0"]},
+{ "title":"Natter", "genre":"Fashion", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"Fashion description", "longDesc":"Fashionnnn", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this boutique","0","0"]},
+{ "title":"Natter", "genre":"Food", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"Food description", "longDesc":"Fooood", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this place","0","0"]},
+{ "title":"Natter", "genre":"Places", "date":"22/08/2017", "imgSRC":"http://via.placeholder.com/300x200", "videoSRC":"https://s3.eu-west-2.amazonaws.com/natter-london.com/Natter+warm+up.mp4", "shortDesc":"Places description", "longDesc":"Placesss", "placeTimes":["0:00","0:02","0:05"], "placeDesc":["Visit this place","0","0"]}
+]
 
 // var allArticles = window.allArticles;
 var type;
 var articleNo;
+var alreadyAddedCategories = [];
 
 function initialise(inType = "home") {
     articleNo = 0;
@@ -64,9 +70,35 @@ var categories = [ {"genre":"Music",	"imgSRC":"http://immarwaiktissad.com/wp-con
 
 function searchArticles(allArticles, criteria, value) {
     var articleList = [];
+
     if (criteria == 0) {
+
+        console.log('1', articleList);
         for (var i = 0; i < allArticles.length; i++) {
-            articleList.push(allArticles[i]);
+            var inList = false;
+            console.log(alreadyAddedCategories.length);
+            for (var x = 0; x < alreadyAddedCategories.length; x++) {
+
+                if (allArticles[i].genre == alreadyAddedCategories[x]) {
+                    inList = true;
+                    break
+                }
+            }
+
+            if (inList == false) {
+                alreadyAddedCategories.push(allArticles[i].genre);
+                articleList.push(allArticles[i]);
+                continue
+            }
+            console.log(alreadyAddedCategories);
+            // if (! allArticles[i].genre in alreadyAddedCategories) {
+            //     console.log('in');
+            // } else {
+            //     console.log('out');
+            //     console.log(alreadyAddedCategories)
+            //     alreadyAddedCategories.push(allArticles[i].genre);
+            //     articleList.push(allArticles[i]);
+            // }
         }
     } else if (criteria == 1) {
         articleList = categories;
