@@ -1,0 +1,51 @@
+p{
+font-size: 20px;
+}
+
+h1{
+  color: red;
+ }
+
+ div
+{
+     margin: 0;
+     padding: 0;
+     text-align: center;
+     margin-top: 30px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.clear {
+    clear: both;    
+  }
+
+#iphone-container {
+	background-image: url('iphoneph.png');
+	background-repeat: no-repeat;
+	background-size:contain;
+	background-position: center center;
+	max-width:100%;
+	height:700px;
+}
+
+#iphone-container>.img2{
+	width:200px;
+	height:auto;
+	padding-top: 150px;
+}
+
+body {
+	max-width: 100vw;
+
+}
+
+
+
+
+
+
+
