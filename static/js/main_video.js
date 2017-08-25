@@ -3,6 +3,9 @@
  */
 
 
+card_showing = false
+
+
 //Article functions
 function get_article(id) {
     return allArticles[id]
@@ -14,34 +17,24 @@ function show_card() {
     vid_card = $('#vid-card')
     vid = $('#my-video')
     vid_card.show()
-    setTimeout(function () {
-        new Tether({
-            element: vid_card,
-            target: vid,
-            attachment: 'top center',
-            targetAttachment: 'top center',
-            // targetModifier: 'hidden'
-            offset: '-15px 0px',
-            enabled: true
-        })
-    }, 10);
+    // setTimeout(function () {
+    //     new Tether({
+    //         element: vid_card,
+    //         target: vid,
+    //         attachment: 'top center',
+    //         targetAttachment: 'top center',
+    //         // targetModifier: 'hidden'
+    //         offset: '-15px 0px',
+    //         enabled: true
+    //     })
+    // }, 200);
 }
 
-function show_pause() {
+function show_vid_buttons() {
     pause_button = $('#vid-pause-icon')
-    vid = $('#my-video')
-    vid_card.show()
-    setTimeout(function () {
-        new Tether({
-            element: pause_button,
-            target: vid,
-            attachment: 'top center',
-            targetAttachment: 'top left',
-            // targetModifier: 'hidden'
-            offset: '0px 0px',
-            enabled: true
-        })
-    }, 10);
+    end_button = $('#vid-end-icon')
+    pause_button.show()
+    end_button.show()
 }
 
 function hide_card(){
@@ -49,16 +42,71 @@ function hide_card(){
     vid_card.hide()
 }
 
-function hide_pause(){
+function hide_vid_buttons(){
     pause_button = $('#vid-pause-icon')
     pause_button.hide()
+    end_button = $('#vid-end-icon')
+    end_button.hide()
 }
 
 $('#vid-pause-icon').click(function (e) {
     video_player = videojs('my-video');
-    video_player.pause()
+    if (video_player.paused() == false) {
+        video_player.pause()
+    } else {
+        video_player.play()
+    }
 });
 
+$('#vid-end-icon').click(function (e) {
+    video_player = videojs('my-video');
+    video_player.pause()
+    hide_vid_buttons()
+    hide_card()
+    $('#my-video').hide()
+    show_article("hi")
+});
+
+var current_card = null
+function card_click() {
+    video_player = videojs('my-video');
+    if (video_player.paused() == false) {
+        video_player.pause()
+        card_text = current_card.text
+        card_tag = current_card.tag
+        vex.dialog.alert({
+            unsafeMessage: '<b>'+card_tag+'</b></br>'+'<p>' +card_text+ '</p>',
+            callback: function (value) {
+                video_player.play()
+            }
+        });
+    }
+
+}
+
+$('#vid-card').click(function (e) {
+    e.preventDefault();
+    card_click()
+});
+
+function set_card_tag(card,id) {
+    vid_card_span = $('#vid-card span')
+    tag = card.tag;
+    vid_card_span.text(tag)
+
+    vid_card = $('#vid-card')
+    vid_card.attr("curr_id",id)
+
+}
+
+function handle_card(id, card, current_time) {
+    current_card = card
+    set_card_tag(card,id);
+    show_card(card);
+    setTimeout(function () {
+       hide_card()
+    }, 3000);
+}
 
 
 
@@ -68,18 +116,19 @@ function play_video(article) {
     // debugger;
     video_player.ready(function () {
         $('#my-video').show()
-        show_pause()
+        show_vid_buttons()
+        reset_video_card_activations(article)
         register_article_cards(article)
         setTimeout(function () {
             video_player.play();
         }, 300);
-        reset_video_card_activations(article)
+
 
     });
 
 
     video_player.on('ended', function () {
-        hide_pause()
+        hide_vid_buttons()
         $('#my-video').hide()
         show_article("hi")
         vid_card.hide()
@@ -127,8 +176,8 @@ function register_card_callback(v_id, card, callback) {
 
 
 function check_card_register(article, currentTime) {
-    video_id = article.id
-    video_register = article_cards_register[video_id]
+    video_id = article.id;
+    video_register = article_cards_register[video_id];
 
     for (var index = 0; index < video_register.length; index++) {
         var item = video_register[index];
@@ -155,18 +204,10 @@ function register_article_cards(article) {
     article_id = article.id
     for (var index = 0; index < a_cards.length; index++) {
         var card = a_cards[index];
-        register_card_callback(article_id,card,show_card)
+        register_card_callback(article_id,card,handle_card)
         }
     }
 
-function handle_card(id, card, current_time) {
-    debugger;
-    show_card(card)
-    setTimeout(function () {
-        vid_card.show();
-        ;
-    }, 300);
-}
 
 
 function show_article(content) {
@@ -199,19 +240,7 @@ $(document).ready(function () {
     vid_card = $('#vid-card')
 
 
-    vid_card.click(function (e) {
-        e.preventDefault();
-        video_player = videojs('my-video');
-        if (video_player.paused() == false) {
-            video_player.pause()
-            vex.dialog.alert({
-                unsafeMessage: '<b>Hello World!</b>',
-                callback: function (value) {
-                    video_player.play()
-                }
-            });
-        }
-    });
+
 
     function update_card_text(params) {
 

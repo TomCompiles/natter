@@ -13,7 +13,25 @@ var allArticles = [
             "tag": "News Uk Office",
             "text": "This is office of News UK",
             "links": []
-        }],
+        },{
+            "time": 1.5,
+            "tag": "Office of the News",
+            "text": "This is office of News UK",
+            "links": []
+        },
+            {
+                "time": 7,
+                "tag": "Keep watching",
+                "text": "This is office of News UK",
+                "links": []
+            },
+            {
+                "time": 10,
+                "tag": "Yes Yes",
+                "text": "This is office of News UK",
+                "links": []
+            }
+        ],
         "placeTimes": ["0:00", "0:02", "0:05"],
         "placeDesc": ["Visit this BLAGH", "0", "0"],
         "articleTitle" : "Blah blah",
@@ -31,11 +49,21 @@ var allArticles = [
         "placeTimes": ["0:00", "0:02", "0:05"],
         "placeDesc": ["Visit this BLAGH", "0", "0"],
         "cards": [{
-            "time": 2,
+            "time": 0.4,
             "tag": "Intro",
             "text": "This is our offical intro",
             "links": []
-        }],
+        },
+            {
+                "time": 1,
+                "tag": "Quick change",
+                "text": "Ayy",
+                "links": []
+            }
+            ]
+        ,
+
+
         "articleTitle" : "Testing",
         "articleContent": "Testing"
     }
