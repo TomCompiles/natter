@@ -9,9 +9,11 @@ function initialise(inType = "home") {
     if (type == "home") {
         articleList = searchArticles(allArticles, 0, "N/A");
     } else if (type == "Categories") {
-        articleList
+        articleList = searchArticles(allArticles, 1, "N/A")
+    } else if(type == "videos"){
+        articleList == searchArticles(allArticles, 3, "N/A");
     } else {
-        articleList = searchArticles(allArticles, 1, type);
+        articleList = searchArticles(allArticles, 2, type);
     }
     /*criteria:
     0 - date
@@ -48,6 +50,10 @@ function searchArticles(allArticles, criteria, value) {
         }
     } else if (criteria == 1) {
         articleList = categories;
+    } else if(criteria == 3) {
+        for (var i = 0; i < allArticles.length; i++) {
+            articleList = allArticles[i].imgSRC;
+        };
     } else {
         for (var i = 0; i < allArticles.length; i++) {
             if (allArticles[i].genre == value) {
@@ -131,6 +137,8 @@ function displayList(articleList) {
             card.children[1].children[2].innerHTML = article.shortDesc;
             document.getElementById("main-view").insertBefore(newNode, document.getElementById("main-view").children[document.getElementById("main-view").children.length]);
         }
+    } else if(type == "videos"){
+        
     }
 }
 
