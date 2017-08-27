@@ -5,8 +5,6 @@ var allArticles = [
         "genre": "Science",
         "date": "22/08/2017",
         "imgSRC": "https://content.natter-london.com/observatory/thumbnail.png",
-        // "videoSRC": {src: 'https://content.natter-london.com/observatory/playlist2.mpd', type: 'application/dash+xml'},
-        "shortDesc": "London's 'Starman'  at the home of time and space", //todo: refactor this to headline and tagline
         "videoSRC": "https://s3-eu-west-1.amazonaws.com/content.natter-london.com/Royal+observatory_1.mp4",
         "longDesc": "London's 'Starman'  at the home of time and space",
         "cards": [{
