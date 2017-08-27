@@ -74,7 +74,7 @@ function show_article() {
     content = article.articleContent
     $('#article-modal').modal()
     $('.modal-title').text(title)
-    $('.modal-body p').text(content)
+    $('.modal-body p').html(content)
 
 }
 
